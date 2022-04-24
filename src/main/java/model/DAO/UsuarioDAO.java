@@ -31,10 +31,7 @@ public class UsuarioDAO implements IUsuarioDao{
 	 */
 	public boolean addUser(Usuario u) {
 		boolean result=false;
-		Scanner sc=new Scanner(System.in);
 		if(!misUsuarios.contains(u) && u!=null) {
-			u.setNombre(sc.next("Introduce un nombre para el usuario: "));
-			u.setPuntuacion(0);
 			misUsuarios.add(u);
 			result=true;
 		}
