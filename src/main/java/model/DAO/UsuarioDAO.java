@@ -65,9 +65,11 @@ public class UsuarioDAO implements IUsuarioDao{
 	}
 	
 	public Usuario search(String name) {
-		Usuario u=new Usuario();
-		if(u.getNombre()==name) {
-			return u;
+		Iterator<Usuario> it=misUsuarios.iterator();
+		while(it.hasNext()) {
+			if(it.next().getNombre()==name) {
+                return it.next();
+            }
 		}
 		return null;
 	}
