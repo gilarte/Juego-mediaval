@@ -71,5 +71,12 @@ public class UsuarioDAO implements IUsuarioDao{
 		}
 		return null;
 	}
+	
+	public boolean isEmpty() {
+		if(!misUsuarios.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
 
 }
