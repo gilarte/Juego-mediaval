@@ -6,7 +6,7 @@ public interface IUsuarioDao {
 
 	
 	public boolean addUser(Usuario u);
-	public void showUsers();
+	public boolean showUsers();
 	public boolean deleteUser(Usuario u);
 	
 }

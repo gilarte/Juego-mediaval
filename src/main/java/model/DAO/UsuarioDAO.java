@@ -41,11 +41,14 @@ public class UsuarioDAO implements IUsuarioDao{
 	/**
 	 * Muestra a todos los usuarios de la lista de usuarios única.
 	 */
-	public void showUsers() {
+	public boolean showUsers() {
+		boolean result=false;
 		Iterator<Usuario> it=misUsuarios.iterator();
 		while(it.hasNext()) {
 			System.out.println(it.next());
+			result=true;
 		}
+		return result;
 	}
 
 	/**
