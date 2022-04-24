@@ -1,6 +1,8 @@
 package model.DAO;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Set;
 
 import Interfaces.IUsuarioDao;
@@ -29,7 +31,10 @@ public class UsuarioDAO implements IUsuarioDao{
 	 */
 	public boolean addUser(Usuario u) {
 		boolean result=false;
+		Scanner sc=new Scanner(System.in);
 		if(!misUsuarios.contains(u) && u!=null) {
+			u.setNombre(sc.next("Introduce un nombre para el usuario: "));
+			u.setPuntuacion(0);
 			misUsuarios.add(u);
 			result=true;
 		}
@@ -40,7 +45,10 @@ public class UsuarioDAO implements IUsuarioDao{
 	 * Muestra a todos los usuarios de la lista de usuarios única.
 	 */
 	public void showUsers() {
-		misUsuarios.iterator();
+		Iterator<Usuario> it=misUsuarios.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
 	}
 
 	/**
