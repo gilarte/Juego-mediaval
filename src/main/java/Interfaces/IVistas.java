@@ -2,7 +2,9 @@ package Interfaces;
 
 public interface IVistas {
 
-	public void MainMenu();
+	public void Inicio(); 
 	public void UserMenu();
 	
 }
+
+

@@ -1,10 +1,13 @@
 package Interfaces;
 
+import model.Usuario;
+
 public interface IUsuarioDao {
 
 	
-	public boolean addUser();
-	public void showUsers();
-	public boolean deleteUser();
-	
+	public boolean addUser(Usuario u);
+	public boolean showUsers();
+	public boolean deleteUser(Usuario u);
+	public Usuario search(String f);
+	public boolean isEmpty();
 }
