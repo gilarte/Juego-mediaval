@@ -35,15 +35,19 @@ public class Controller implements IController {
 				UsuarioDAO.getInstance().addUser(a);
 				Utils.print("Usuario "+a.getNombre()+" con una puntuación actual de "+a.getPuntuacion()+"\nHa sido agregado con éxito.");
 				break;
-			case 3:
+			case 3: //se borran usuarios inexistentes
 				Usuario d = new Usuario();
 				if (x.isEmpty()) {
 					Utils.print("elige usuario:");
 					UsuarioDAO.getInstance().showUsers();
-					d = UsuarioDAO.getInstance().search(Utils.leeString());
-					UsuarioDAO.getInstance().deleteUser(d);
+					d=x.search(Utils.leeString());
+					if(d!=null) {
+						x.deleteUser(d);
+						Utils.print("Usuario borrado correctamente");
+					}else {
+						Utils.print("el nombre de usuario introducido no existe.");
+					}
 					elegido=null;
-					Utils.print("Usuario borrado correctamente");
 				}else {
 					Utils.print("No hay usuarios registrados.");
 				}
