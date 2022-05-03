@@ -1,41 +1,49 @@
 package Model;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 import Model.Usuario;
 
 public class Ranking {
-	private HashMap<Integer, Usuario> ranking;
+	private HashMap<String, Integer> ranking;
 	
 	private static Ranking miRanking;
 	
-	private Ranking(int puntuacion, Usuario a) {
-		
-		this.ranking =  new HashMap<Integer, Usuario>();
-		ranking.put(puntuacion, a);
+	private Ranking() {
+		ranking= new HashMap<String, Integer>();
 	}
 	
-	public static Ranking getMiRanking(int puntuacion, Usuario a) {
-		if(miRanking==null) {
-			miRanking = new Ranking(puntuacion, a);
-		}
-		return miRanking;
-	}
-
 	public static Ranking getMiRanking() {
+		if(miRanking==null) {
+			miRanking = new Ranking();
+		}
 		return miRanking;
 	}
-
 	
-	public int getPuntuacion() {
-		return miRanking.getPuntuacion();
+	public void addToRanking(String nombre, int puntos) {
+		miRanking.ranking.put(nombre, puntos);
 	}
 	
-	public void setPuntuacion(int newPuntuacion) {
+	public void dropUserRanking(String nombre) {
 		if(miRanking!=null) {
-			miRanking.setPuntuacion(newPuntuacion);
+			miRanking.ranking.remove(nombre);
 		}
 	}
+	
+	public void updatePuntuacion(String nombre, int newPuntuacion) {
+		miRanking.ranking.replace(nombre, newPuntuacion);
+	}
+	
+	public void muestraRanking(int numero) {
+		TreeMap<String, Integer> sorted = new TreeMap<>();
+		sorted.putAll(miRanking.ranking);
+		System.out.println(sorted);
+			
+			
+		}	
 		
 	
 }
