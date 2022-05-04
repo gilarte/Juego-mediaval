@@ -36,11 +36,7 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		return "Usuario: " + nombre + ",\nPuntuacion: " + puntuacion;
-=======
-		return "Usuario: " + nombre + ", Puntuacion: " + puntuacion;
->>>>>>> 83403a4d4c09564e4e669b9d27b964fc4f8eeeb1
 	}
 	@Override
 	public int hashCode() {
@@ -65,11 +61,5 @@ public class Usuario {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD
-}
-=======
-	
-
 	
 }
->>>>>>> 83403a4d4c09564e4e669b9d27b964fc4f8eeeb1
