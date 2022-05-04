@@ -1,14 +1,25 @@
 package model.DAO;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import Interfaces.IUsuarioDao;
 import model.Usuario;
 
-public class UsuarioDAO implements IUsuarioDao{
+@XmlRootElement(name="UsuarioDAO")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class UsuarioDAO extends Usuario implements IUsuarioDao{
 	
 	private Set<Usuario> misUsuarios;
 	private static UsuarioDAO _newInstance;
@@ -80,5 +91,32 @@ public class UsuarioDAO implements IUsuarioDao{
 		}
 		return false;
 	}
+	
+	public void save(UsuarioDAO misUsuarios) {
+		JAXBContext contexto;
+		String usuarioXML = "Usuarios.xml";
+		try {
+			contexto = JAXBContext.newInstance(UsuarioDAO.class);
+			Marshaller m = contexto.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
+			m.marshal(misUsuarios, new File(usuarioXML));
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void load(Set<Usuario> misUsuarios) {
+		JAXBContext contexto;
+		try {
+				String usuarioXML = "Usuarios.xml";
+				contexto = JAXBContext.newInstance(UsuarioDAO.class);
+				
+				Unmarshaller um = contexto.createUnmarshaller();
+				UsuarioDAO newUsuarioDAO = (UsuarioDAO) um.unmarshal(new File(usuarioXML));
+				misUsuarios=newUsuarioDAO.misUsuarios;
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
+	}
 }

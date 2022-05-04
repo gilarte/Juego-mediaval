@@ -1,8 +1,17 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Usuario")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Usuario {
 
+	@XmlAttribute(name="Nombre")
 	private String nombre;
+	@XmlAttribute(name="Puntuación")
 	private int puntuacion;
 	
 	public Usuario() {
@@ -27,7 +36,11 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Usuario: " + nombre + ",\nPuntuacion: " + puntuacion;
+=======
+		return "Usuario: " + nombre + ", Puntuacion: " + puntuacion;
+>>>>>>> 83403a4d4c09564e4e669b9d27b964fc4f8eeeb1
 	}
 	@Override
 	public int hashCode() {
@@ -52,4 +65,11 @@ public class Usuario {
 			return false;
 		return true;
 	}
+<<<<<<< HEAD
 }
+=======
+	
+
+	
+}
+>>>>>>> 83403a4d4c09564e4e669b9d27b964fc4f8eeeb1
