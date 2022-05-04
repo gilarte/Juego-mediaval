@@ -1,4 +1,4 @@
-package ejecutable;
+1package ejecutable;
 
 import controller.Controller;
 

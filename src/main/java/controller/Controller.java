@@ -2,7 +2,7 @@ package controller;
 
 import Interfaces.IController;
 import model.Usuario;
-import model.UsuarioDAO;
+import model.DAO.UsuarioDAO;
 import utils.Utils;
 import vistas.Vistas;
 
