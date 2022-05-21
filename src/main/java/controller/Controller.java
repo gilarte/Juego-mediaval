@@ -34,6 +34,8 @@ public class Controller implements IController {
 				Usuario a = new Usuario(aux,0);
 				UsuarioDAO.getInstance().addUser(a);
 				Utils.print("Usuario "+a.getNombre()+" con una puntuación actual de "+a.getPuntuacion()+"\nHa sido agregado con éxito.");
+				x.addUser(a);
+				x.save(x);
 				break;
 			case 3: //se borran usuarios inexistentes
 				Usuario d = new Usuario();
