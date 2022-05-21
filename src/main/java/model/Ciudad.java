@@ -12,6 +12,11 @@ public class Ciudad {
 	
 	public Ciudad() {
 		super();
+		this.nombre = nombre;
+		Ciudadania = 50;
+		Religion = 50;
+		Ejercito = 50;
+		Economia = 50;
 	}
 	public Ciudad(String nombre, int ciudadania, int religion, int ejercito, int economia) {
 		super();
@@ -56,7 +61,7 @@ public class Ciudad {
 	
 	@Override
 	public String toString() {
-		return "Ciudad [nombre=" + nombre + ", Ciudadania=" + Ciudadania + ", Religion=" + Religion + ", Ejercito="
+		return "Ciudad [Ciudadania=" + Ciudadania + ", Religion=" + Religion + ", Ejercito="
 				+ Ejercito + ", Economia=" + Economia + "]";
 	}
 	

@@ -10,6 +10,7 @@ public class Vistas{
 		Utils.print("3. Borrar usuario");
 		Utils.print("4. Iniciar partida");
 		Utils.print("5. Cambiar usuario");
+		Utils.print("6. Ranking");
 		Utils.print("0. Salir");
 		
 	}

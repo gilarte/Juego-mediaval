@@ -1,8 +1,10 @@
 package Interfaces;
 
+import model.Ciudad;
+
 public interface IController {
 
 	public void startGame();
-	public void showCity();
-	public void opcMenu();
-}
+	public boolean showCity(Ciudad c);
+	public boolean mult(int x);
+	}

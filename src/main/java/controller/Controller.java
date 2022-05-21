@@ -1,8 +1,12 @@
 package controller;
 
 import Interfaces.IController;
+import model.Ciudad;
+import model.Decisiones;
+import model.Eventos;
 import model.Usuario;
 import model.DAO.UsuarioDAO;
+import ranking.Ranking;
 import utils.Utils;
 import vistas.Vistas;
 
@@ -56,6 +60,33 @@ public class Controller implements IController {
 				if(elegido!=null) {
 					System.out.println("CORRECTO");
 					Utils.print(elegido.toString());
+					Ciudad c=new Ciudad();
+					Usuario auxx=new Usuario("auxiliar", elegido.getPuntuacion());
+					Decisiones dec = new Decisiones();
+					Eventos ev = new Eventos();
+					
+					int contador=6;
+					Utils.print("Bienvenido, eres el heredero de esta ciudad\n y tienes que ir eligiendo una serie de decisiones\n para que la ciudad prospere... Buena suerte!");
+					while(showCity(c)) {
+						c=dec.eligedecicion(dec.muestraDecicicones(), c);
+						System.out.println(c);
+						if(showCity(c)) {
+							contador++;
+							if(mult(contador)) {
+								ev.eligeEvento(c);
+								System.out.println(c);
+							}
+						}
+					}
+					Utils.print("Has perdido");
+					if(contador>auxx.getPuntuacion()) {
+						if(Ranking.getMiRanking().search(elegido.getNombre())) {
+							Ranking.getMiRanking().updatePuntuacion(elegido.getNombre(), contador);
+						}else {
+							Ranking.getMiRanking().addToRanking(elegido.getNombre(), contador);
+						}
+					}
+					
 				}else {
 					Utils.print("No has elegido un usuario");
 				}
@@ -73,6 +104,9 @@ public class Controller implements IController {
 				}else {
 					Utils.print("No estas logueado");
 				}
+				break;
+			case 6:
+					Ranking.getMiRanking().muestraRanking();
 				break;
 			case 0:
 				valid = false;
@@ -94,6 +128,7 @@ public class Controller implements IController {
 			boolean valide=true;
 			do {
 				try {
+					
 					elegido=x.search(Utils.leeString());
 					Utils.print("Usuario "+elegido.getNombre()+" con una puntuación de "+elegido.getPuntuacion()+"\nHa sido elegido correctamente");
 					valide=false;
@@ -112,14 +147,20 @@ public class Controller implements IController {
 		return elegido;
 	}
 
-	public void showCity() {
-		// TODO Auto-generated method stub
+	public boolean showCity(Ciudad c) {
 
+		if((c.getCiudadania()<100 && c.getCiudadania()>0) && (c.getEconomia()<100 && c.getEconomia()>0) && (c.getEjercito()<100 && c.getEjercito()>0) && (c.getReligion()<100 && c.getReligion()>0)) {
+			return true;
+		}
+		return false;
 	}
 
-	public void opcMenu() {
-		// TODO Auto-generated method stub
+	public boolean mult(int x) {
 
+		if(x%7==0) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -1,4 +1,4 @@
-package DAO;
+package model.DAO;
 
 import Interfaces.ICiudadDao;
 import model.Ciudad;
@@ -13,7 +13,7 @@ public class CiudadDAO implements ICiudadDao {
 
 	public void disminuyeCiudadania(int x, Ciudad e) {
 		// TODO Auto-generated method stub
-		e.setCiudadania(x-e.getCiudadania());
+		e.setCiudadania(e.getCiudadania()-x);
 		
 	}
 
@@ -24,7 +24,7 @@ public class CiudadDAO implements ICiudadDao {
 
 	public void disminuyeReligion(int x, Ciudad e) {
 		// TODO Auto-generated method stub
-		e.setReligion(x-e.getReligion());
+		e.setReligion(e.getReligion()-x);
 		
 	}
 
@@ -35,7 +35,7 @@ public class CiudadDAO implements ICiudadDao {
 
 	public void disminuyeEjercito(int x, Ciudad e) {
 		// TODO Auto-generated method stub
-		e.setEjercito(x-e.getEjercito());
+		e.setEjercito(e.getEjercito()-x);
 		
 	}
 
@@ -47,7 +47,7 @@ public class CiudadDAO implements ICiudadDao {
 
 	public void disminuyeEconomia(int x, Ciudad e) {
 		// TODO Auto-generated method stub
-		e.setEconomia(x-e.getEconomia());
+		e.setEconomia(e.getEconomia()-x);
 	}
 
 	public String muestraStats(Ciudad e) {
